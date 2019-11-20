@@ -36,7 +36,7 @@ class Challenge1(unittest.TestCase):
         else:
             return "MISC"
 
-    def test_challenge1(self):
+    def test_challenge5(self):
         # code for our test steps
         self.driver.get("https://www.copart.com")
         self.assertIn("Copart", self.driver.title)

@@ -13,7 +13,7 @@ class Challenge1(unittest.TestCase):
         # code to close webdriver
         self.driver.close()
 
-    def test_challenge1(self):
+    def test_challenge3(self):
         # code for our test steps
         self.driver.get("https://copart.com")
         self.assertIn("Copart", self.driver.title)

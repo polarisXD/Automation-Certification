@@ -13,7 +13,7 @@ class Challenge1(unittest.TestCase):
         # code to close webdriver
         self.driver.close()
 
-    def test_challenge1(self):
+    def test_challenge4(self):
         # code for our test steps
         print()
 
