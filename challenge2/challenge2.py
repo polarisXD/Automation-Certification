@@ -27,7 +27,8 @@ class Challenge2(unittest.TestCase):
         timeout = 10
         wait = WebDriverWait(self.driver, timeout)
         table = wait.until(EC.presence_of_element_located((By.ID, "serverSideDataTable"))).get_attribute("innerHTML")
-        assert "PORSCHE" in table
+        print(table)
+        self.assertIn("PORSCHE", table)
 
 
 if __name__ == '__main__':
