@@ -6,7 +6,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 
 
-class Challenge1(unittest.TestCase):
+class Challenge6(unittest.TestCase):
 
     def setUp(self):
         # code to startup webdriver

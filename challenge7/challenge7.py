@@ -2,7 +2,7 @@ import unittest
 from selenium import webdriver
 
 
-class Challenge1(unittest.TestCase):
+class Challenge7(unittest.TestCase):
 
     def setUp(self):
         # code to startup webdriver

@@ -2,7 +2,7 @@ import unittest
 from selenium import webdriver
 from challenge4.fibonacciSpelling import spellFibonacciNumber
 
-class Challenge1(unittest.TestCase):
+class Challenge4(unittest.TestCase):
 
     def setUp(self):
         # code to startup webdriver

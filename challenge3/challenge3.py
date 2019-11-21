@@ -3,7 +3,7 @@ from selenium import webdriver
 from selenium.webdriver.common.keys import Keys
 
 
-class Challenge1(unittest.TestCase):
+class Challenge3(unittest.TestCase):
 
     def setUp(self):
         # code to startup webdriver
