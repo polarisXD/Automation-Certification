@@ -1,24 +1,23 @@
 
 class NumberSpeller:
     def __init__(self):
-        pass
+        self.singles = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
+        self.teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen",
+                 "nineteen"]
+        self.tens = ["", "ten", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
+        self.places = ["", "", "", "hundred", "thousand", "", "hundred", "million", "", "hundred", "billion"]
 
     def getSinglesSpelling(self, number):
-        singles = ["", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine"]
-        return singles[number]
+        return self.singles[number]
 
     def getTeensSpelling(self, number):
-        teens = ["ten", "eleven", "twelve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen",
-                 "nineteen"]
-        return teens[int(str(number)[1])]
+        return self.teens[int(str(number)[1])]
 
     def getTensSpelling(self, number):
-        tens = ["", "tenty", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety"]
-        return tens[number]
+        return self.tens[number]
 
     def getDigitsSpelling(self, digits):
-        places = ["", "", "", "hundred", "thousand", "", "hundred", "million", "", "hundred", "billion"]
-        return places[digits]
+        return self.places[digits]
 
     def getNumberSpelling(self, number, digits):
         if number >= 10:
