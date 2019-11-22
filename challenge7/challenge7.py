@@ -1,6 +1,8 @@
 import unittest
 from selenium import webdriver
-
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support.wait import WebDriverWait
+from selenium.webdriver.support import expected_conditions as EC
 
 class Challenge7(unittest.TestCase):
 
@@ -26,10 +28,17 @@ class Challenge7(unittest.TestCase):
             for item in popular_column:
                 item_name = item.text
                 item_link = item.get_attribute("href")
-                items.append({item_name: item_link})
+                items.append([item_name, item_link])
             makes_models.append(items)
         for col in makes_models:
-            print(col)
+            for model in col:
+                model_name = model[0].lower().replace(" ", "-")
+                link = model[1]
+                self.driver.get(link)
+                WebDriverWait(self.driver, 10).until(
+                    EC.presence_of_element_located((By.ID, "serverSideDataTable")))
+                search_results = self.driver.find_element_by_class_name("result-title")
+                self.assertIn(model_name, search_results.text)
 
 
 if __name__ == '__main__':
