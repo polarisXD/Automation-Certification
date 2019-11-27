@@ -20,7 +20,6 @@ class Challenge8(unittest.TestCase):
         # code for our test steps
         try:
             data = self.api.search("toyota camry")
-            # TODO: output to log file
             logging.info("Response from toyota comary query:")
             logging.info(data)
             searches = ["nissan skyline", "porsche 911", "ford 150", "ferrari", "tesla model s", "mazda 3", "mazda 6",
