@@ -1,9 +1,7 @@
 import unittest
+import logging
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.common.keys import Keys
-from selenium.webdriver.support.wait import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
+from copartAPI import CopartAPI
 
 
 class Challenge8(unittest.TestCase):
@@ -11,6 +9,8 @@ class Challenge8(unittest.TestCase):
     def setUp(self):
         # code to startup webdriver
         self.driver = webdriver.Chrome("../chromedriver")
+        self.api = CopartAPI()
+        logging.basicConfig(filename="copartapi.log",level=logging.INFO)
 
     def tearDown(self):
         # code to close webdriver
@@ -18,12 +18,21 @@ class Challenge8(unittest.TestCase):
 
     def test_challenge8(self):
         # code for our test steps
-        self.driver.get("https://www.copart.com")
-        self.assertIn("Copart", self.driver.title)
-        search = self.driver.find_element_by_id("input-search")
-        search.send_keys("toyota camry")
-        search.send_keys(Keys.RETURN)
-        assert "No results found" not in self.driver.page_source
+        try:
+            data = self.api.search("toyota camry")
+            # TODO: output to log file
+            logging.info("Response from toyota comary query:")
+            logging.info(data)
+            searches = ["nissan skyline", "porsche 911", "ford 150", "ferrari", "tesla model s", "mazda 3", "mazda 6",
+                        "pontiac solstice", "chevy camaro", "infinity g35", "subaru outback"]
+            for search in searches:
+                data = self.api.search(search)
+                logging.info("Elements in " + search + " search results: " + str(data["data"]["results"]["totalElements"]))
+        except ConnectionError:
+            print("Response error")
+            assert False
+
+
 
 
 if __name__ == '__main__':
