@@ -23,13 +23,23 @@ class Challenge3(unittest.TestCase):
         timeout = 10
         WebDriverWait(self.driver, timeout).until(
             EC.presence_of_element_located((By.XPATH, '//*[@id="tabTrending"]/div[1]/div[2]/div/ul/li/a')))
-        popular_items = self.driver.find_elements_by_xpath('//*[@id="tabTrending"]/div[1]/div[2]/div/ul/li/a')
-        assert popular_items
-        assert len(popular_items) > 0
-        for item in popular_items:
-            item_link = item.get_attribute("href")
-            assert item_link
-            print(item.text + " - " + item_link)
+        popular_makes_models = self.driver.find_elements_by_xpath('//*[@id="tabTrending"]/div[1]/div[2]/div/ul/li/a')
+        popular_categories = self.driver.find_elements_by_xpath('//*[@id="tabTrending"]/div[3]/div/ul/li/a')
+        assert popular_makes_models
+        assert len(popular_makes_models) > 0
+        print("Makes and models:")
+        for make_model in popular_makes_models:
+            make_model_link = make_model.get_attribute("href")
+            assert make_model_link
+            print(make_model.text + " - " + make_model_link)
+        print("\nCategories")
+        elements_left = len(popular_categories)
+        while elements_left > 0:
+            category = popular_categories[len(popular_categories) - elements_left]
+            categories_link = category.get_attribute("href")
+            assert categories_link
+            print(category.text + " - " + categories_link)
+            elements_left = elements_left - 1
 
 
 if __name__ == '__main__':
