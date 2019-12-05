@@ -53,7 +53,7 @@ class Challenge5(unittest.TestCase):
         table = self.driver.find_element_by_id("serverSideDataTable")
         self.assertIsNotNone(table, "Unable to load table data")
         table_rows = table.find_elements_by_tag_name("tr")
-        while len(table_rows) == 100:
+        while len(table_rows) < 100:
             table_rows = table.find_elements_by_tag_name("tr")
         models = {}
         damages = {}
