@@ -1,6 +1,10 @@
 import unittest
 from selenium import webdriver
 from copartAPI import CopartAPI
+import pandas
+
+
+
 
 class Challenge10(unittest.TestCase):
 
@@ -13,17 +17,30 @@ class Challenge10(unittest.TestCase):
         # code to close webdriver
         self.driver.close()
 
+    def create_query(self, row):
+        query = ""
+        for col in row:
+            if type(col) is not float:
+                query = query + str(col) + " "
+        return query
+
     def test_challenge10(self):
         # code for our test steps
-        #TODO: get csv
-        csv_data = [[], [], []]
+        self.create_csv()
+        csv_data = pandas.read_excel("data.xlsx", dtype=str)
+        data = csv_data.values
         try:
-            for row in csv_data:
-                data = self.api.search(row)
-                assert row in data["data"]["results"]["content"]
+            for row in data:
+                query = self.create_query(row)
+                print("Query: " + query)
+                data = self.api.search(query)
+                print("Search results: " + str(data["data"]["results"]["totalElements"]))
         except ConnectionError:
             print("Response error")
             assert False
+
+    def create_csv(self):
+        pass
 
 
 if __name__ == '__main__':
