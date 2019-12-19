@@ -1,6 +1,6 @@
 import unittest
 from selenium import webdriver
-from copartAPI import CopartAPI
+from commons.copartAPI import CopartAPI
 import pandas
 
 
@@ -38,9 +38,6 @@ class Challenge10(unittest.TestCase):
         except ConnectionError:
             print("Response error")
             assert False
-
-    def create_csv(self):
-        pass
 
 
 if __name__ == '__main__':

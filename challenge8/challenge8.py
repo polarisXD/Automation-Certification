@@ -1,7 +1,7 @@
 import unittest
 import logging
 from selenium import webdriver
-from copartAPI import CopartAPI
+from commons.copartAPI import CopartAPI
 
 
 class Challenge8(unittest.TestCase):
