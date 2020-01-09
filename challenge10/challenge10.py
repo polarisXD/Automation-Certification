@@ -26,7 +26,6 @@ class Challenge10(unittest.TestCase):
 
     def test_challenge10(self):
         # code for our test steps
-        self.create_csv()
         csv_data = pandas.read_excel("data.xlsx", dtype=str)
         data = csv_data.values
         try:
